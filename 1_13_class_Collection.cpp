@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 template <typename Object>
@@ -38,7 +39,7 @@ class Collection{
                 col[index] = x;
                 return Collection(index+1, col);
             }
-            else this;
+            else return Collection(index, col);
         }
         // Collection remove(Object x) {
         //     if (this->contains(x))
@@ -50,11 +51,13 @@ class Collection{
 int main(){
     Collection<int> a;
 
-    cout << a.isEmpty();
+    cout << boolalpha;
+    cout << "a is empty?: " << a.isEmpty() << endl;
+    cout << "create b from a by adding 1, 2, 3, 4" << endl;
     Collection<int> b = a.insert(1).insert(2).insert(3).insert(4);
-    cout << a.isEmpty() << endl;
-    cout << b.isEmpty() << endl;
-    cout << b.contains(3) << endl;
-    cout << b.contains(5) << endl;
-    cout << b.makeEmpty().isEmpty() << endl;
+    cout << "a is empty?: " << a.isEmpty() << endl;
+    cout << "b is empty?: " << b.isEmpty() << endl;
+    cout << "b contains 3?: " << b.contains(3) << endl;
+    cout << "b contains 5?: " << b.contains(5) << endl;
+    cout << "make b empty. b is empty?: " << b.makeEmpty().isEmpty() << endl;
 }
